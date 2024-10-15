@@ -6,7 +6,7 @@ FROM docker.io/centos/systemd
 
  RUN yum -y install httpd
 
- RUN echo "hello this is Docker Test recently updated to using jenkins " > /var/www/html/index.html
+ RUN echo "hello this is Docker Test recently updated to using jenkins" > /var/www/html/index.html
 
  EXPOSE 80
 
