@@ -1,13 +1,13 @@
-FROM docker.io/centos/systemd
+FROM ubuntu
 
- MAINTAINER kunal kunalchavan@gmail.com
+RUN apt update -y && apt install apache2 -y && apt install zip -y && apt install wget -y
 
- LABEL   Install HTTPD NOW
+RUN wget https://www.free-css.com/assets/files/free-css-templates/download/page296/carvilla.zip 
 
- RUN yum -y install httpd
+RUN unzip carvilla.zip -d /mnt
 
- RUN echo "hello this is Docker Test recently updated to using jenkins " > /var/www/html/index.html
+RUN cp -rvf /mnt/carvilla-v1.0/* /var/www/html/
 
- EXPOSE 80
+EXPOSE 80
 
- CMD [ "httpd", "-D", "FOREGROUND"]
+CMD [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
